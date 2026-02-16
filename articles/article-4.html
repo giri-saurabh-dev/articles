@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-Trust Architectures // Saurabh Giri</title>
+    <link rel="stylesheet" href="article.css">
+    <link rel="shortcut icon" href="/asset/favicon.ico" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <div id="progress"></div>
+
+    <a href="/index.html" class="back-link">
+        <i data-lucide="chevron-left" size="16"></i> ~/archive
+    </a>
+
+    <div class="container">
+
+        <header class="article-header">
+            <span class="meta-tag">Research_Note // 002</span>
+            <h1>Zero-Trust Architectures in Modern SaaS</h1>
+            <div class="article-metadata">
+                <span>DATE: 2026.02.14</span>
+                <span>READ_TIME: 8 MIN</span>
+                <span>STATUS: DECLASSIFIED</span>
+            </div>
+        </header>
+
+        <main class="content">
+            <p>
+                The perimeter is dead. In a world of distributed cloud infrastructure and remote-first engineering
+                teams, the traditional "moat and castle" security model is a liability.
+            </p>
+
+            <div class="callout">
+                <i data-lucide="info" size="18"></i><br><br>
+                Zero Trust is not a product; it is a shift in mindset where "never trust, always verify" becomes the
+                baseline for every request.
+            </div>
+
+            <h2>The Three Pillars of Verification</h2>
+
+            <p>
+                To implement a hardened zero-trust environment, we must focus on identity-centric security. This
+                involves moving away from IP-based trust and towards cryptographic identity.
+            </p>
+
+            <pre><code>// Example Identity Verification Logic
+function verifyRequest(token, context) {
+    const user = decryptIdentity(token);
+    if (!user.is_authenticated || !context.mfa_verified) {
+        throw new SecurityException("Access Denied: Invalid Trust Level");
+    }
+    return grantMinimumPrivilege(user.role);
+}</code></pre>
+
+            <h2>Conclusion</h2>
+
+            <p>
+                As we move further into agentic workflows and automated infrastructure, the ability to verify intent at
+                the granular level will be the difference between a secure system and a headline-making breach.
+            </p>
+        </main>
+
+        <footer class="article-footer">
+            <a href="#" class="footer-btn">← PREVIOUS_LOG</a>
+            <a href="#" class="footer-btn">NEXT_LOG →</a>
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        /* Reading Progress */
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progress').style.width = progress + "%";
+        });
+    </script>
+
+</body>
+
+</html>
