@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardening the Lab Hub // Saurabh Giri</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="article.css">
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<a href="/index.html" class="back-link">
+    <i data-lucide="chevron-left" size="14"></i> ~/archive
+</a>
+
+<div class="container">
+
+<header class="article-header">
+    <span class="meta-tag">Operations_Update // v1.0</span>
+    <h1>Phase II: Security Hardening & Monitoring</h1>
+    <div class="article-metadata">
+        <span>DATE: 2026.02.17</span>
+        <span>READ_TIME: 8 MIN</span>
+        <span>STATUS: DECLASSIFIED</span>
+    </div>
+</header>
+
+<main class="content">
+    <p>
+        Infrastructure is only as strong as its visibility. In this phase, we transitioned the Lab Hub from a simple bookmark landing page into an authenticated, real-time monitoring station.
+    </p>
+
+    <div class="callout">
+        <i data-lucide="lock" size="18"></i><br><br>
+        SECURITY UPDATE: Implemented Cloudflare Access (Identity-Aware Proxy). The dashboard is now locked behind an OTP email challenge, ensuring that "Public Hostnames" do not equate to "Public Access."
+    </div>
+
+    <h2>I. The Docker Nervous System</h2>
+    <p>
+        To enable real-time status pulses, we mounted the <code>docker.sock</code> into the Homepage container. This allows the dashboard to query the Docker API directly for container health and resource metrics.
+    </p>
+
+<pre><code># widgets.yaml - System Vitals
+- resources:
+    cpu: true
+    memory: true
+    disk: /</code></pre>
+
+    <h2>II. Milestone Documentation</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>MODULE</th>
+                <th>IMPLEMENTATION</th>
+                <th>RESULT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Authentication</td>
+                <td>CF Access Policy</td>
+                <td>Zero-Trust Gateway Active</td>
+            </tr>
+            <tr>
+                <td>Docker Socket</td>
+                <td>Volume Bind Mount</td>
+                <td>Live Status Indicators</td>
+            </tr>
+            <tr>
+                <td>Telemetry</td>
+                <td>Resource Widgets</td>
+                <td>Real-time CPU/RAM Tracking</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>
+        With the "Bouncer" at the door and the "Eyes" on the hardware, the lab environment is now production-ready. We can now scale services with the confidence that they are monitored and shielded from the open web.
+    </p>
+</main>
+
+<footer class="article-footer">
+    <a href="article-5.html" class="footer-btn">← PREVIOUS_LOG</a>
+    <a href="#" class="footer-btn">NEXT_LOG →</a>
+</footer>
+
+</div>
+
+<script>
+lucide.createIcons();
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('progress').style.width = progress + "%";
+});
+</script>
+
+</body>
+</html>
